@@ -4,7 +4,7 @@ import tkinter as tk
 
 
 class MerkleTree:
-    def _init_(self):
+    def __init__(self):
         self.leaves = []
         self.root = None
  
@@ -54,7 +54,7 @@ class MerkleTree:
 
 
 class BloomFilter:
-    def _init_(self, capacity, error_rate):
+    def __init__(self, capacity, error_rate):
         self.capacity = capacity
         self.error_rate = error_rate
         self.bit_array_size = self.calculate_bit_array_size()
@@ -75,7 +75,7 @@ class BloomFilter:
             index = int(hash_value, 16) % self.bit_array_size
             self.bit_array[index] = True
 
-    def _contains_(self, data):
+    def __contains__(self, data):
         for i in range(self.num_hash_functions):
             hash_value = hashlib.sha256((data + str(i)).encode()).hexdigest()
             index = int(hash_value, 16) % self.bit_array_size
@@ -85,7 +85,7 @@ class BloomFilter:
 
 
 class HealthCareSystem:
-    def _init_(self):
+    def __init__(self):
         self.merkle_tree = MerkleTree()
         self.bloom_filter = BloomFilter(capacity=1000, error_rate=0.001)
         self.records = {}
@@ -113,7 +113,7 @@ class HealthCareSystem:
 
 
 class HealthCareSystemGUI:
-    def _init_(self, healthcare_system):
+    def __init__(self, healthcare_system):
         self.healthcare_system = healthcare_system
         self.root = tk.Tk()
         self.root.title("Healthcare System")
